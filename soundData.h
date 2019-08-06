@@ -1,6 +1,7 @@
 #pragma
 #include <vector>
 
+#define Sound_CONFIG_VERSION @Sound_CONFIG_VERSION@
 
 namespace Data
 {
