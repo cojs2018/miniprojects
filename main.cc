@@ -4,7 +4,9 @@
 #include <cmath>
 #include <string>
 #include <fstream>
+#include <complex>
 #include "soundData.h"
+#include "fourier_transform.h"
 
 using namespace std;
 using namespace Data;
@@ -28,15 +30,13 @@ typedef struct WAV_HEADER{
 
 int main(int args, char *argv[])
 {
-  vector<sound_file> sf;
+  sound_file sf0;
 
   wav_hdr newWaveHDR;
   FILE* wave_file;
   int headerSize = sizeof(newWaveHDR),filelength = 0;
 
   do {
-    sound_file sf0;
-
     //Get file path
     const char* file_path = ".../example.wav";
     wave_file = fopen(file_path, 'r');
@@ -63,7 +63,7 @@ int main(int args, char *argv[])
 
         uint32_t audio_data_size = newWaveHDR.Subchunk2Size;
         bytes *data_store = newWaveHDR.data;
-        for(int i = 0, i < audio_data_size, i++)
+        for(int i = 0; i < audio_data_size; i++)
         {
           //Height of each byte will be the amplitude
           double a = double(data_store[i]);
@@ -83,4 +83,15 @@ int main(int args, char *argv[])
 
     unsigned long audio_length = newWaveHDR.Subchunk2Size();
   } while(1);
+
+  sound_file sf1;
+
+  wave wv;
+  vector<complex<double>> new_amp = wv.transform(sf0.amplitude);
+  ve
+  //Extract real vales from each vector entry
+  for(int count = 0; count < new_amp.size(); count++)
+  {
+    //A
+  }
 }
