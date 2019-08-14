@@ -8,13 +8,16 @@ using namespace std;
 using namespace Data;
 
 vector<complex<double>> wave::transform(vector<double> am, vector<double> fs, int sr, int ns)
-{
+{ /* Function that performs Fourier transform on a given sound wave by
+   * first multiplying the amplitude by the element number over the sampling
+   * frequency, and imaginary value i, taking the exponent and multiplying by
+   * the wave equation. After this the integral of the data is found. */
   complex<double> s;
   vector<complex<double>> result_before_integration;
 
   for(int j = 0; j < ns; j++)
-  {
-    s = exp(1i * am.at(j) * j/sr);
+  { //Note: 1/sr (sampling frequency) would give the time period.
+    s = cos(am.at(j) * j/sr)*exp(1i * am.at(j) * j/sr);
     result_before_integration.pushback(s);
   }
 
@@ -23,7 +26,8 @@ vector<complex<double>> wave::transform(vector<double> am, vector<double> fs, in
 }
 
 vector<complex<double>> wave::integ(vector<complex<double>> v, double x0, double x1, double h)
-{
+{ /* Function working out the complex integral of given data using Simpson's
+   * 3/8ths rule.*/
   vector<complex<double>> r;
 
   for(double j = x0; j < x1; j = j + h)

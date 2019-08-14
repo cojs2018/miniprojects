@@ -5,13 +5,14 @@
 #include <string>
 #include <fstream>
 #include <complex>
+#include <ctime>
 #include "soundData.h"
 #include "fourier_transform.h"
 
 using namespace std;
 using namespace Data;
 
-typedef struct WAV_HEADER{
+typedef struct WAV_HEADER{ //Define structure for wave file data
   char  Riff[4];
   unsigned long ChunkSize;
   char WAVE[4];
@@ -30,8 +31,9 @@ typedef struct WAV_HEADER{
 
 int main(int args, char *argv[])
 {
-  sound_file sf0;
+  sound_file sf0; //Sound file instance object
 
+  //Define new structure
   wav_hdr newWaveHDR;
   FILE* wave_file;
   int headerSize = sizeof(newWaveHDR),filelength = 0;
@@ -69,11 +71,11 @@ int main(int args, char *argv[])
           double a = double(data_store[i]);
           double f = 2 * PI / a; //Frequency is 2*pi over amplitude.
 
-          freq.pushback(f);
+          freq.pushback(f); //Add to vectors
           amp.pushback(a);
         }
 
-        sf0.frequency = freq;
+        sf0.frequency = freq; //Set as instance of sound file
         sf0.amplitude = amp;
       }
       delete [] buffer;
@@ -85,13 +87,29 @@ int main(int args, char *argv[])
   } while(1);
 
   sound_file sf1;
+  sound_file sf1_imag;
 
-  wave wv;
+  wave wv; //Generate new wave
   vector<complex<double>> new_amp = wv.transform(sf0.amplitude);
-  ve
-  //Extract real vales from each vector entry
+  vector<double> real_values;
+  vector<double> imag_values;
+  //Extract real and imaginary vales from each vector entry
   for(int count = 0; count < new_amp.size(); count++)
   {
-    //A
+    //Define element of the vector
+    complex<double> z_element = new_amp.at(count);
+
+    real_values.pushback(z_element.real());
+    sf1.frequency.pushback(z_element.real() * 2 * PI);
+    imag_values.pushback(z_element.imag());
+    sf1_imag.frequency.pushback(z_element.imag() * 2 * PI);
   }
+
+  sf1.sampling_rate = sf0.sampling_rate; //Instance where this stays the same.
+  sf1.number_of_samples = real_values.size();
+  sf1.amplitude = real_values;
+
+  sf1_imag.sampling_rate = sf0.sampling_rate;
+  sf1_imag.number_of_samples = imag_values.size();
+  sf1_imag.amplitude = imag_values;
 }
