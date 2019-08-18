@@ -1,0 +1,11 @@
+﻿  fourier_transform.cpp
+C:\Users\User\Documents\GitHub\miniprojects\Sound_transformationVS\Sound_transformationVS\fourier_transform.h(20,3): warning C4091:  'static ': ignored on left of 'Data::wave' when no variable is declared
+  Sound_transformationVS.cpp
+C:\Users\User\Documents\GitHub\miniprojects\Sound_transformationVS\Sound_transformationVS\fourier_transform.cpp(40,32): warning C4244:  'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\User\Documents\GitHub\miniprojects\Sound_transformationVS\Sound_transformationVS\soundData.h(15,3): warning C4091:  'static ': ignored on left of 'Data::sound_file' when no variable is declared
+C:\Users\User\Documents\GitHub\miniprojects\Sound_transformationVS\Sound_transformationVS\fourier_transform.h(20,3): warning C4091:  'static ': ignored on left of 'Data::wave' when no variable is declared
+C:\Users\User\Documents\GitHub\miniprojects\Sound_transformationVS\Sound_transformationVS\Sound_transformationVS.cpp(57,24): warning C4244:  'initializing': conversion from 'unsigned long' to 'uint16_t', possible loss of data
+C:\Users\User\Documents\GitHub\miniprojects\Sound_transformationVS\Sound_transformationVS\Sound_transformationVS.cpp(74,23): warning C4018:  '<': signed/unsigned mismatch
+  Generating Code...
+C:\Users\User\Documents\GitHub\miniprojects\Sound_transformationVS\Sound_transformationVS\Sound_transformationVS.cpp(103,28): warning C4018:  '<': signed/unsigned mismatch
+  Sound_transformationVS.vcxproj -> C:\Users\User\Documents\GitHub\miniprojects\Sound_transformationVS\Debug\Sound_transformationVS.exe

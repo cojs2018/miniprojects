@@ -1,5 +1,5 @@
 cmake_minimum_required (version 2.6)
-project (miniprojects main.cc)
+project (miniprojects [CXX])
 
 set (Sound_CONFIG_VERSION 0)
 
